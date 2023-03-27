@@ -168,8 +168,16 @@ function displayPersonInfo(person) {
     personInfo += "Occupation: " + person.occupation + "\n";
 
     alert(personInfo);
-
 }
+
+function findPersonFamily(person, people) {
+    let family = "Parents: " + searchById(person.parents).toString() + "\n";
+    family += "Siblings: " + findSiblings(person, people).toString() + "\n";
+    family += "Spouse: " + findSpouse(person, people).toString() + "\n";
+    return family;
+}
+
+// family += "Children: " + findChildren(person, people).toString() + "\n";
 
 function displayPeople(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
