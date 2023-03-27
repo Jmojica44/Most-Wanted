@@ -77,12 +77,30 @@ function searchByTraits(people) {
         case 'gender':
             const genderToSearchFor = validatedPrompt(
                 'Please enter the gender you are searching for.',
-                ['male','female']()
-            
+                ['male','female']
+            );
 
             const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
             return genderSearchResults;
-    }
+
+        case "eye color":
+            const eyeColorToSearchFor = validatedPrompt(
+                'Please enter the eye color you are searching for.',
+                ["brown","black","hazel","blue","green"]
+            );
+
+            const eyeColorSearchResults = people.filter(people => (people.eyeColor.toLowerCase() === eyeColorToSearchFor.toLowerCase()));     
+            return eyeColorSearchResults;
+
+        case "occupation":
+            const occupationToSearchFor = validatedPrompt(
+                'Please enter the occupation you are searching for.',
+                ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
+            );
+
+            const occupationSearchResults = people.filter(people => (people.occupation.toLowerCase() === occupationToSearchFor.toLowerCase()));     
+            return occupationSearchResults;
+        }
 
     // filteredList = searchByAge(people);
     // filteredList = searchByHeight(people);
