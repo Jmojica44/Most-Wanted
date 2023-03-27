@@ -119,17 +119,17 @@ function mainMenu(person, people) {
     switch (mainMenuUserActionChoice) {
         case "info":
             //! TODO
-            // displayPersonInfo(person);
+            displayPersonInfo(person);
             break;
         case "family":
             //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person, people);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
-            // let personDescendants = findPersonDescendants(person, people);
-            // displayPeople('Descendants', personDescendants);
+            let personDescendants = findPersonDescendants(person, people);
+            displayPeople('Descendants', personDescendants);
             break;
         case "quit":
             return;
@@ -138,6 +138,20 @@ function mainMenu(person, people) {
     }
 
     return mainMenu(person, people);
+}
+
+function displayPersonInfo(person) {
+    let personInfo = "First Name: " + person.firstName + "\n";
+    personInfo += "Last Name: " + person.lastName + "\n";
+    personInfo += "Gender: " + person.gender + "\n";
+    personInfo += "DOB: " + person.dob + "\n";
+    personInfo += "Height: " + person.height + "\n";
+    personInfo += "Weight: " + person.weight + "\n";
+    personInfo += "Eye Color: " + person.eyeColor + "\n";
+    personInfo += "Occupation: " + person.occupation + "\n";
+
+    alert(personInfo);
+
 }
 
 function displayPeople(displayTitle, peopleToDisplay) {
