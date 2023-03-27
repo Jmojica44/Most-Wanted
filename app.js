@@ -40,8 +40,7 @@ function searchPeopleDataSet(people) {
             results = searchByName(people);
             break;
         case 'traits':
-            //! TODO
-            // results = searchByTraits(people);
+            results = searchByTraits(people);
             break;
         default:
             return searchPeopleDataSet(people);
@@ -64,6 +63,24 @@ function searchByName(people) {
     return fullNameSearchResults;
 }
 
+let gender = ["male","female"]
+let eyeColor = ["brown","black","hazel","blue","green"]
+let occupation = ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
+
+function searchByTraits(people) {
+    const traitToSearchFor = prompt('Please enter the trait you are searching for.');
+        if people.filter = "gender"
+            genderToSearchFor = console.log(prompt('Please type male or female.'))
+
+
+    // filteredList = searchByAge(people);
+    // filteredList = searchByHeight(people);
+    // filteredList = searchByWeight(people);
+    // filteredList = searchByOccupation(people);
+    // filteredList = searchByEyeColor(people);
+        const traitSearchResults = people.filter(person => (person.traitToSearchFor.toLowerCase() === traitToSearchFor.toLowerCase()));
+        return traitSearchResults;
+}
 function mainMenu(person, people) {
 
     const mainMenuUserActionChoice = validatedPrompt(
