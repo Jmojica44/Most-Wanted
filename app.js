@@ -83,6 +83,15 @@ function searchByTraits(people) {
             const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
             return genderSearchResults;
 
+        case "dob":
+            
+            const dobToSearchFor = parseInt(dobToSearchFor)
+            const dobToSearchForprompt('Please enter the dob you are searching for. mm/dd/yyyy'),
+            ;
+
+            const dobSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
+            return dobSearchResults;
+
         case "eye color":
             const eyeColorToSearchFor = validatedPrompt(
                 'Please enter the eye color you are searching for.',
