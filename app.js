@@ -68,9 +68,21 @@ let eyeColor = ["brown","black","hazel","blue","green"]
 let occupation = ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
 
 function searchByTraits(people) {
-    const genderToSearchFor = prompt('Please enter the gender you are searching for.');
-    const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
-    return genderSearchResults;
+    const traitToSearchFor = validatedPrompt(
+        'Please enter the trait you are searching for.',
+        ['gender','eye color', 'occupation']
+    );
+
+    switch (traitToSearchFor) {
+        case 'gender':
+            const genderToSearchFor = validatedPrompt(
+                'Please enter the gender you are searching for.',
+                ['male','female']()
+            
+
+            const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
+            return genderSearchResults;
+    }
 
     // filteredList = searchByAge(people);
     // filteredList = searchByHeight(people);
