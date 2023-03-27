@@ -171,13 +171,17 @@ function displayPersonInfo(person) {
 }
 
 function findPersonFamily(person, people) {
+    const idFilterResults = [];
     let newIdToSearchForInt = parseInt(person.parents)
-        const idFilterResults = people.filter(person => person.id === newIdToSearchForInt);
-        return idFilterResults;
+        const parentResults = people.filter(person => person.id === newIdToSearchForInt);
+        idFilterResults.push(parentResults);
+    
+    return idFilterResults;
+
 
     // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
     // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
-    return family;
+    // return family;
 }
 
 // family += "Children: " + findChildren(person, people).toString() + "\n";
