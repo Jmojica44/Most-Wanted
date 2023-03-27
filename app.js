@@ -69,17 +69,15 @@ let occupation = ["programmer","assistant","landscaper","nurse","student","archi
 
 function searchByTraits(people) {
     const traitToSearchFor = prompt('Please enter the trait you are searching for.');
-        if people.filter = "gender"
-            genderToSearchFor = console.log(prompt('Please type male or female.'))
-
+    const traitSearchResults = people.filter(person => (person.gender.toLowerCase() === traitToSearchFor.toLowerCase()));     
+    return traitSearchResults;
 
     // filteredList = searchByAge(people);
     // filteredList = searchByHeight(people);
     // filteredList = searchByWeight(people);
     // filteredList = searchByOccupation(people);
     // filteredList = searchByEyeColor(people);
-        const traitSearchResults = people.filter(person => (person.traitToSearchFor.toLowerCase() === traitToSearchFor.toLowerCase()));
-        return traitSearchResults;
+
 }
 function mainMenu(person, people) {
 
