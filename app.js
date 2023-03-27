@@ -13,7 +13,7 @@ function runSearchAndMenu(people) {
     const searchResults = searchPeopleDataSet(people);
 
     if (searchResults.length > 1) {
-        DisplayPeople('Search Results', searchResults);
+        displayPeople('Search Results', searchResults);
     }
     else if (searchResults.length === 1) {
         const person = searchResults[0];
@@ -68,9 +68,9 @@ let eyeColor = ["brown","black","hazel","blue","green"]
 let occupation = ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
 
 function searchByTraits(people) {
-    const traitToSearchFor = prompt('Please enter the trait you are searching for.');
-    const traitSearchResults = people.filter(person => (person.gender.toLowerCase() === traitToSearchFor.toLowerCase()));     
-    return traitSearchResults;
+    const genderToSearchFor = prompt('Please enter the gender you are searching for.');
+    const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
+    return genderSearchResults;
 
     // filteredList = searchByAge(people);
     // filteredList = searchByHeight(people);
