@@ -70,7 +70,7 @@ let occupation = ["programmer","assistant","landscaper","nurse","student","archi
 function searchByTraits(people) {
     const traitToSearchFor = validatedPrompt(
         'Please enter the trait you are searching for.',
-        ['gender','eye color', 'occupation']
+        ['gender','eye color', 'occupation','dob','height','weight']
     );
 
     switch (traitToSearchFor) {
@@ -84,13 +84,21 @@ function searchByTraits(people) {
             return genderSearchResults;
 
         case "dob":
-            
-            const dobToSearchFor = parseInt(dobToSearchFor)
-            const dobToSearchForprompt('Please enter the dob you are searching for. mm/dd/yyyy'),
-            ;
+            const dobToSearchForStr = prompt('Please enter the dob you are searching for. m/dd/yyyy');
+            const dobFilterResults = people.filter(person => person.dob === dobToSearchForStr);
+            return dobFilterResults;
 
-            const dobSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
-            return dobSearchResults;
+        case "height":
+            const heightToSearchForString = prompt('Please enter the height of the person you are searching for. (in inches) ');
+            const heightToSearchForInt = parseInt(heightToSearchForString);
+            const heightFilterResults = people.filter(person => person.height === heightToSearchForInt);
+            return heightFilterResults;
+
+        case "weight":
+            const weightToSearchForString = prompt('Please enter the height of the person you are searching for. (in lbs) ');
+            const weightToSearchForInt = parseInt(weightToSearchForString);
+            const weightFilterResults = people.filter(person => person.weight === weightToSearchForInt);
+            return weightFilterResults;
 
         case "eye color":
             const eyeColorToSearchFor = validatedPrompt(
