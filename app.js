@@ -171,9 +171,12 @@ function displayPersonInfo(person) {
 }
 
 function findPersonFamily(person, people) {
-    let family = "Parents: " + searchById(person.parents).toString() + "\n";
-    family += "Siblings: " + findSiblings(person, people).toString() + "\n";
-    family += "Spouse: " + findSpouse(person, people).toString() + "\n";
+    let newIdToSearchForInt = parseInt(person.parents)
+        const idFilterResults = people.filter(person => person.id === newIdToSearchForInt);
+        return idFilterResults;
+
+    // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
+    // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
     return family;
 }
 
