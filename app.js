@@ -176,21 +176,29 @@ function displayPersonInfo(person) {
 }
 
 function findPersonFamily(person, people) {
-    var familyResults = [];
-    let parentIdToSearchForInt = parseInt(person.parents);
-        parentResults = people.map(person => person.id === parentIdToSearchForInt);   
-        familyResults = parentResults        
-        return familyResults
+    debugger;
+    let parentResults = people.filter(per => per.id === person.parents[0] || per.id === person.parents[1]);   
+    displayPeople("Parents",parentResults)
+    
+    let spouseResults = people.filter(per => per.id === person.currentSpouse)
+    displayPeople("Spouse",spouseResults)
 
+    let siblingResults = people.filter(per => per.parents[0] === person.parents[0] || per.parents[1] === person.parents[1]);
+    displayPeople("Siblings",siblingResults)
 
     // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
     // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
-    return family;
+
 }
 
 // family += "Children: " + findChildren(person, people).toString() + "\n";
 
 function displayPeople(displayTitle, peopleToDisplay) {
+    const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
+    alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
+}
+
+function displayPeople2(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
