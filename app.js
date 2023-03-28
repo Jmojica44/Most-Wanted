@@ -176,7 +176,7 @@ function displayPersonInfo(person) {
 }
 
 function findPersonFamily(person, people) {
-    debugger;
+
     let parentResults = people.filter(per => per.id === person.parents[0] || per.id === person.parents[1]);   
     displayPeople("Parents",parentResults)
     
