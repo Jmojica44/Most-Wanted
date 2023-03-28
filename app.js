@@ -190,15 +190,18 @@ function findPersonFamily(person, people) {
     // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
 
 }
-
+function findPersonDescendants(person, people) {
+    let allDescendants = []
+    let descendantResults = people.filter(per => per.parents[0] === person.id || per.parents[1] === person.id)
+    for(let desc of descendantResults) {
+        let grandkids = people.filter(per => per.parents[0] === desc.id || per.parents[1] === desc.id)
+        allDescendants = descendantResults.concat(grandkids)
+    }
+    displayPeople("Descendants", allDescendants)
+}
 // family += "Children: " + findChildren(person, people).toString() + "\n";
 
 function displayPeople(displayTitle, peopleToDisplay) {
-    const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
-    alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
-}
-
-function displayPeople2(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
