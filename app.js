@@ -182,9 +182,10 @@ function findPersonFamily(person, people) {
         familyResults = parentResults        
         return familyResults
 
+
     // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
     // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
-    // return familyResults
+    return family;
 }
 
 // family += "Children: " + findChildren(person, people).toString() + "\n";
