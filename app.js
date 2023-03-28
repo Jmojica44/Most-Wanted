@@ -49,6 +49,8 @@ function searchPeopleDataSet(people) {
     return results;
 }
 
+
+
 function searchById(people) {
     const idToSearchForString = prompt('Please enter the id of the person you are searching for.');
     const idToSearchForInt = parseInt(idToSearchForString);
@@ -119,6 +121,7 @@ function searchByTraits(people) {
             return occupationSearchResults;
         }
 
+
     // filteredList = searchByAge(people);
     // filteredList = searchByHeight(people);
     // filteredList = searchByWeight(people);
@@ -126,6 +129,8 @@ function searchByTraits(people) {
     // filteredList = searchByEyeColor(people);
 
 }
+
+
 function mainMenu(person, people) {
 
     const mainMenuUserActionChoice = validatedPrompt(
@@ -171,13 +176,15 @@ function displayPersonInfo(person) {
 }
 
 function findPersonFamily(person, people) {
-    let newIdToSearchForInt = parseInt(person.parents)
-        const idFilterResults = people.filter(person => person.id === newIdToSearchForInt);
-        return idFilterResults;
+    var familyResults = [];
+    let parentIdToSearchForInt = parseInt(person.parents);
+        parentResults = people.map(person => person.id === parentIdToSearchForInt);   
+        familyResults = parentResults        
+        return familyResults
 
     // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
     // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
-    return family;
+    // return familyResults
 }
 
 // family += "Children: " + findChildren(person, people).toString() + "\n";
