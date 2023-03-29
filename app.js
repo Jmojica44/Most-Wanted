@@ -13,7 +13,7 @@ function runSearchAndMenu(people) {
     const searchResults = searchPeopleDataSet(people);
 
     if (searchResults.length > 1) {
-        displayPeople('Search Results', searchResults);
+        console.log()
     }
     else if (searchResults.length === 1) {
         const person = searchResults[0];
@@ -41,12 +41,8 @@ function searchPeopleDataSet(people) {
             break;
         case 'traits':
             results = searchByTraits(people);
-            displayPeople('Results',results);
-            let reSearch = prompt('Would you like to filter the results again? Y or N');
-            if (reSearch.toLowerCase() === "y")
-             {searchByTraits(results)}
-            else {
-            exitOrRestart()};
+            displayPeople('Results',results)
+            reSearch(results)
             break;
         default:
             return searchPeopleDataSet(people);
@@ -55,6 +51,14 @@ function searchPeopleDataSet(people) {
     return results;
 }
 
+function reSearch(results) {
+    const reSearchQuestion = validatedPrompt('Would you like to filter the results again? Yes or No'.toLowerCase(),["Yes", "No"]);
+        if (reSearchQuestion === "yes") {
+            const filteredResults = searchByTraits(results);
+            displayPeople('Results',filteredResults);
+            reSearch(filteredResults);
+            }
+    }
 
 
 function searchById(people) {
@@ -71,24 +75,15 @@ function searchByName(people) {
     return fullNameSearchResults;
 }
 
-let gender = ["male","female"]
-let eyeColor = ["brown","black","hazel","blue","green"]
-let occupation = ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
-
 function searchByTraits(people) {
-    let allResults = []
-    let traits = ['gender','eye color', 'occupation','dob','height','weight']
-    const traitToSearchFor = validatedPrompt('Please enter the trait you are searching for.', traits);
+    const traitToSearchFor = validatedPrompt('Please enter the trait you are searching for.', ['gender','eye color','occupation','dob','height','weight']);
 
     switch (traitToSearchFor) {
         case 'gender':
             const genderToSearchFor = validatedPrompt(
                 'Please enter the gender you are searching for.', ['male','female']);
-            const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
-            allResults.concat(genderSearchResults);
-            let genderIndex = traits.indexOf('gender');
-            traits.splice(genderIndex);
-            return allResults;
+                const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
+            return genderSearchResults;
 
         case "dob":
             const dobToSearchForStr = prompt('Please enter the dob you are searching for. m/dd/yyyy');
@@ -222,6 +217,7 @@ function validatedPrompt(message, acceptableAnswers) {
         return validatedPrompt(message, acceptableAnswers);
     }
 }
+
 
 function exitOrRestart(people) {
     const userExitOrRestartChoice = validatedPrompt(
