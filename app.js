@@ -41,6 +41,12 @@ function searchPeopleDataSet(people) {
             break;
         case 'traits':
             results = searchByTraits(people);
+            displayPeople('Results',results);
+            let reSearch = prompt('Would you like to filter the results again? Y or N');
+            if (reSearch.toLowerCase() === "y")
+             {searchByTraits(results)}
+            else {
+            exitOrRestart()};
             break;
         default:
             return searchPeopleDataSet(people);
@@ -70,20 +76,19 @@ let eyeColor = ["brown","black","hazel","blue","green"]
 let occupation = ["programmer","assistant","landscaper","nurse","student","architect","doctor","politician"]
 
 function searchByTraits(people) {
-    const traitToSearchFor = validatedPrompt(
-        'Please enter the trait you are searching for.',
-        ['gender','eye color', 'occupation','dob','height','weight']
-    );
+    let allResults = []
+    let traits = ['gender','eye color', 'occupation','dob','height','weight']
+    const traitToSearchFor = validatedPrompt('Please enter the trait you are searching for.', traits);
 
     switch (traitToSearchFor) {
         case 'gender':
             const genderToSearchFor = validatedPrompt(
-                'Please enter the gender you are searching for.',
-                ['male','female']
-            );
-
+                'Please enter the gender you are searching for.', ['male','female']);
             const genderSearchResults = people.filter(people => (people.gender.toLowerCase() === genderToSearchFor.toLowerCase()));     
-            return genderSearchResults;
+            allResults.concat(genderSearchResults);
+            let genderIndex = traits.indexOf('gender');
+            traits.splice(genderIndex);
+            return allResults;
 
         case "dob":
             const dobToSearchForStr = prompt('Please enter the dob you are searching for. m/dd/yyyy');
@@ -120,13 +125,6 @@ function searchByTraits(people) {
             const occupationSearchResults = people.filter(people => (people.occupation.toLowerCase() === occupationToSearchFor.toLowerCase()));     
             return occupationSearchResults;
         }
-
-
-    // filteredList = searchByAge(people);
-    // filteredList = searchByHeight(people);
-    // filteredList = searchByWeight(people);
-    // filteredList = searchByOccupation(people);
-    // filteredList = searchByEyeColor(people);
 
 }
 
@@ -185,9 +183,6 @@ function findPersonFamily(person, people) {
 
     let siblingResults = people.filter(per => per.parents[0] === person.parents[0] || per.parents[1] === person.parents[1]);
     displayPeople("Siblings",siblingResults)
-
-    // family += "Siblings: " + findSiblings(person, people).toString() + "\n";
-    // family += "Spouse: " + findSpouse(person, people).toString() + "\n";
 
 }
 
