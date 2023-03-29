@@ -47,7 +47,6 @@ function searchPeopleDataSet(people) {
         default:
             return searchPeopleDataSet(people);
     }
-
     return results;
 }
 
@@ -59,7 +58,6 @@ function reSearch(results) {
             reSearch(filteredResults);
             }
     }
-
 
 function searchById(people) {
     const idToSearchForString = prompt('Please enter the id of the person you are searching for.');
@@ -86,19 +84,19 @@ function searchByTraits(people) {
             return genderSearchResults;
 
         case "dob":
-            const dobToSearchForStr = prompt('Please enter the dob you are searching for. m/dd/yyyy');
+            const dobToSearchForStr = prompt('Please enter the dob you are searching for. month/day/year');
             const dobFilterResults = people.filter(person => person.dob === dobToSearchForStr);
             return dobFilterResults;
 
         case "height":
-            const heightToSearchForString = prompt('Please enter the height of the person you are searching for. (in inches) ');
-            const heightToSearchForInt = parseInt(heightToSearchForString);
+            const heightToSearchForStr = prompt('Please enter the height of the person you are searching for. (in inches) ');
+            const heightToSearchForInt = parseInt(heightToSearchForStr);
             const heightFilterResults = people.filter(person => person.height === heightToSearchForInt);
             return heightFilterResults;
 
         case "weight":
-            const weightToSearchForString = prompt('Please enter the height of the person you are searching for. (in lbs) ');
-            const weightToSearchForInt = parseInt(weightToSearchForString);
+            const weightToSearchForStr = prompt('Please enter the weight of the person you are searching for. (in lbs) ');
+            const weightToSearchForInt = parseInt(weightToSearchForStr);
             const weightFilterResults = people.filter(person => person.weight === weightToSearchForInt);
             return weightFilterResults;
 
@@ -120,9 +118,7 @@ function searchByTraits(people) {
             const occupationSearchResults = people.filter(people => (people.occupation.toLowerCase() === occupationToSearchFor.toLowerCase()));     
             return occupationSearchResults;
         }
-
 }
-
 
 function mainMenu(person, people) {
 
@@ -151,7 +147,6 @@ function mainMenu(person, people) {
         default:
             alert('Invalid input. Please try again.');
     }
-
     return mainMenu(person, people);
 }
 
@@ -217,7 +212,6 @@ function validatedPrompt(message, acceptableAnswers) {
         return validatedPrompt(message, acceptableAnswers);
     }
 }
-
 
 function exitOrRestart(people) {
     const userExitOrRestartChoice = validatedPrompt(
